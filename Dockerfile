@@ -27,12 +27,18 @@ FROM fnndsc/ubuntu-python3:latest
 MAINTAINER fnndsc "dev@babymri.org"
 
 ENV APPROOT="/usr/src/imageconvert"
+ENV DEBIAN_FRONTEND=noninteractive
 COPY ["imageconvert", "${APPROOT}"]
 COPY ["requirements.txt", "${APPROOT}"]
 
 WORKDIR $APPROOT
 
+RUN apt install -y imagemagick
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 CMD ["imageconvert.py", "--help"]
