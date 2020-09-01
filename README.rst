@@ -65,8 +65,16 @@ Arguments
         [-i|--inputFile <inputFile>]
         Input file within the inputDir that needs to be converted  
 
+        [-o|--outputFile <outputFile>]
+        Name of the outputFile that should be used to store the resultant output in the outputDir 
+
         [-a|--args <convertArgsToPass>]
-        Arguments that are upposed to be passed to the "magick convert"
+        Optional string of additional arguments to "pass through" to imagemagick convert.
+
+        All the args for convert are themselves specified at the plugin level
+        with this flag. These args MUST be contained within single quotes
+        (to protect them from the shell) and the quoted string MUST start with
+        the required keyword 'ARGS: '.
 
         [-x|--man]
         Show full help.
